@@ -791,8 +791,8 @@ int main()
 			
 			
 			
-			shaderProgram.setVec3("lightSource.direction", lightSourceDirection[0]);
-			shaderProgram.setVec3("lightSource.direction1", lightSourceDirection[1]);
+			shaderProgram.setVec3("lightSource.direction3", lightSourceDirection[0]);
+			shaderProgram.setVec3("lightSource.direction4", lightSourceDirection[1]);
 			
 			
 			// only for directional light

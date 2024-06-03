@@ -5,15 +5,15 @@
 2. Παρακάτω παρατίθενται είκονες απο αποτελέσματα των ασκήσεων :
 
 <div style="text-align:center;">
-    <img src="src/ask1.png" alt="ask1" width="800">
+    <img src="Ergasia_2_OpenGL/src/ask1.png" alt="ask1" width="800">
 </div>
 
 <div style="text-align:center;">
-    <img src="src/ask3.png" alt="ask3" width="800">
+    <img src="Ergasia_2_OpenGL/src/ask3.png" alt="ask3" width="800">
 </div>
 
 <div style="text-align:center;">
-    <img src="src/ask4.png" alt="ask4" width="800">
+    <img src="Ergasia_2_OpenGL/src/ask4.png" alt="ask4" width="800">
 </div>
 
 ## Notes
