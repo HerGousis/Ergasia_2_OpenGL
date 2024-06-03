@@ -189,7 +189,6 @@
     <ClInclude Include="src\Shader_58650_21.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="README.md" />
     <None Include="src\glm\detail\func_common.inl" />
     <None Include="src\glm\detail\func_common_simd.inl" />
     <None Include="src\glm\detail\func_exponential.inl" />
