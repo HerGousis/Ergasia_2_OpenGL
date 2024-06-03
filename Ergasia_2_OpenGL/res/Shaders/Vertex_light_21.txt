@@ -1,0 +1,15 @@
+#version 330 core
+
+layout(location = 0) in vec3 inputPosition;
+
+uniform mat4 model;
+uniform mat4 pasxa;
+uniform mat4 mami;
+
+uniform mat4 view;
+uniform mat4 projection;
+
+void main()
+{
+	gl_Position = projection *mami* view *pasxa* model * vec4(inputPosition.x, inputPosition.y, inputPosition.z, 1.0);
+}

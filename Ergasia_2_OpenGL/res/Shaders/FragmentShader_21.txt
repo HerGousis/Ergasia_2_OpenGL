@@ -1,0 +1,208 @@
+#version 330 core
+
+struct Material
+{
+	vec3 ambientColor;
+	vec3 diffuseColor;
+	vec3 specularColor;
+
+	float shininess;
+};
+
+uniform Material material;
+
+struct LightSource
+{
+	vec3 direction3;
+	vec3 direction4;
+	
+	// only for direcdtional light
+	vec3 position;
+	vec3 position1;
+	vec3 position2;
+	vec3 position5;
+
+
+	vec3 ambientColor;
+	vec3 diffuseColor;
+	vec3 specularColor;
+
+	vec3 ambientColor1;
+	vec3 diffuseColor1;
+	vec3 specularColor1;
+
+	vec3 ambientColor2;
+	vec3 diffuseColor2;
+	vec3 specularColor2;
+
+	vec3 ambientColor3;
+	vec3 diffuseColor3;
+	vec3 specularColor3;
+
+	vec3 ambientColor4;
+	vec3 diffuseColor4;
+	vec3 specularColor4;
+
+	vec3 ambientColor5;
+	vec3 diffuseColor5;
+	vec3 specularColor5;
+
+	float constant;
+	float linear;
+	float quadratic;
+
+	float constant1;
+	float linear1;
+	float quadratic1;
+
+	float constant2;
+	float linear2;
+	float quadratic2;
+
+	
+	float constant5;
+	float linear5;
+	float quadratic5;
+
+
+};
+
+uniform LightSource lightSource;
+uniform LightSource lightSource1;
+uniform LightSource lightSource2;
+
+uniform LightSource lightSource5;
+
+in vec3 normal;
+
+
+
+in vec3 fragmentPosition;
+
+
+
+uniform vec3 cameraPosition;
+
+
+void main()
+{
+	// ambient
+	vec3 ambientColor = material.ambientColor * lightSource.ambientColor;
+	vec3 ambientColor1 = material.ambientColor * lightSource.ambientColor1;
+	vec3 ambientColor2 = material.ambientColor * lightSource.ambientColor2;
+	vec3 ambientColor5 = material.ambientColor * lightSource.ambientColor5;
+	vec3 ambientColor4 = material.ambientColor * lightSource.ambientColor4;
+	vec3 ambientColor3 = material.ambientColor * lightSource.ambientColor3;
+
+
+	// diffuse
+	vec3 normal = normalize(normal);
+	vec3 normal1 = normalize(normal);
+	vec3 normal2 = normalize(normal);
+	vec3 normal5 = normalize(normal);
+	vec3 normal3 = normalize(normal);
+	vec3 normal4 = normalize(normal);
+
+
+	 vec3 lightSourceDirection = normalize(lightSource.position - fragmentPosition);	// to dianisma toy fvtos 
+	vec3 lightSourceDirection1 = normalize(lightSource.position1 - fragmentPosition);
+	vec3 lightSourceDirection2 = normalize(lightSource.position2 - fragmentPosition);
+	vec3 lightSourceDirection5 = normalize(lightSource.position5 - fragmentPosition);
+	vec3 lightSourceDirection3 = normalize(-lightSource.direction3); //	only for direcdtional light
+	vec3 lightSourceDirection4 = normalize(-lightSource.direction4);
+
+
+	// A . B = |A| * |B| * cosθ ---- |A| and |B| equals 1 if they are unit vectors, which they are.
+	float diffuseAngle = max(dot(lightSourceDirection, normal), 0);
+	float diffuseAngle1 = max(dot(lightSourceDirection1, normal1), 0);
+	float diffuseAngle2 = max(dot(lightSourceDirection2, normal2), 0);
+	float diffuseAngle5 = max(dot(lightSourceDirection5, normal5), 0);
+	float diffuseAngle4 = max(dot(lightSourceDirection4, normal4), 0);
+	float diffuseAngle3 = max(dot(lightSourceDirection3, normal3), 0);
+
+
+
+
+	vec3 diffuseColor = diffuseAngle* lightSource.diffuseColor * material.diffuseColor;
+	vec3 diffuseColor1 = diffuseAngle1* lightSource.diffuseColor1 * material.diffuseColor;
+	vec3 diffuseColor2 = diffuseAngle2* lightSource.diffuseColor2 * material.diffuseColor;
+	vec3 diffuseColor5 = diffuseAngle5* lightSource.diffuseColor5 * material.diffuseColor;
+	vec3 diffuseColor4 = diffuseAngle4* lightSource.diffuseColor4 * material.diffuseColor;
+	vec3 diffuseColor3 = diffuseAngle3* lightSource.diffuseColor3 * material.diffuseColor;
+
+
+
+	// specular 
+	vec3 reflectedLightDirection = reflect(-lightSourceDirection, normal);
+	vec3 reflectedLightDirection1 = reflect(-lightSourceDirection1, normal1);
+	vec3 reflectedLightDirection2 = reflect(-lightSourceDirection2, normal2);
+	vec3 reflectedLightDirection5 = reflect(-lightSourceDirection5, normal5);
+	//----------------------------------------
+	vec3 reflectedLightDirection4 = reflect(-lightSourceDirection4, normal4);
+	vec3 reflectedLightDirection3 = reflect(-lightSourceDirection3, normal3);
+
+
+
+	vec3 viewerDirection = normalize(cameraPosition - fragmentPosition);
+    vec3 viewerDirection1 = normalize(cameraPosition - fragmentPosition);
+    vec3 viewerDirection2 = normalize(cameraPosition - fragmentPosition);
+	vec3 viewerDirection5 = normalize(cameraPosition - fragmentPosition);
+	//------------------------------------------
+	vec3 viewerDirection4 = normalize(cameraPosition - fragmentPosition);
+	vec3 viewerDirection3 = normalize(cameraPosition - fragmentPosition);
+
+
+
+	float specularAngle = pow(max(dot(reflectedLightDirection, viewerDirection), 0), material.shininess);
+	float specularAngle1 = pow(max(dot(reflectedLightDirection1, viewerDirection1), 0), material.shininess);
+	float specularAngle2 = pow(max(dot(reflectedLightDirection2, viewerDirection2), 0), material.shininess);
+	float specularAngle5 = pow(max(dot(reflectedLightDirection5, viewerDirection5), 0), material.shininess);
+	//---------------------------------------
+	float specularAngle4 = pow(max(dot(reflectedLightDirection4, viewerDirection4), 0), material.shininess);
+	float specularAngle3 = pow(max(dot(reflectedLightDirection3, viewerDirection3), 0), material.shininess);
+
+	
+	vec3 specularColor = specularAngle * lightSource.specularColor * material.specularColor;
+	vec3 specularColor1 = specularAngle1 * lightSource.specularColor1 * material.specularColor;
+	vec3 specularColor2 = specularAngle2 * lightSource.specularColor2 * material.specularColor;
+	vec3 specularColor5 = specularAngle5 * lightSource.specularColor5 * material.specularColor;
+	//--------------------------------
+	vec3 specularColor4 = specularAngle4 * lightSource.specularColor4 * material.specularColor;
+	vec3 specularColor3 = specularAngle3 * lightSource.specularColor3 * material.specularColor;
+
+
+	float distanceFromLightSource = length(lightSource.position - fragmentPosition);
+	float distanceFromLightSource1 = length(lightSource.position1 - fragmentPosition);
+	float distanceFromLightSource2 = length(lightSource.position2 - fragmentPosition);
+	float distanceFromLightSource5 = length(lightSource.position5 - fragmentPosition);
+
+
+
+	float attenuation = 1.0 / ( lightSource.constant + lightSource.linear * distanceFromLightSource  +lightSource.quadratic *  distanceFromLightSource);
+	float attenuation1 = 1.0 / ( lightSource.constant1 + lightSource.linear1 * distanceFromLightSource1  +lightSource.quadratic1 *  distanceFromLightSource1);
+	float attenuation2 = 1.0 / ( lightSource.constant2 + lightSource.linear2 * distanceFromLightSource2  +lightSource.quadratic2 *  distanceFromLightSource2);
+	float attenuation5 = 1.0 / ( lightSource.constant5 + lightSource.linear5 * distanceFromLightSource5  +lightSource.quadratic5 *  distanceFromLightSource5);
+
+
+
+	ambientColor *= attenuation;
+	diffuseColor *= attenuation;
+	specularColor *= attenuation;
+
+	ambientColor1 *= attenuation1;
+	diffuseColor1 *= attenuation1;
+	specularColor1 *= attenuation1;
+
+	ambientColor2 *= attenuation2;
+	diffuseColor2 *= attenuation2;
+	specularColor2 *= attenuation2;
+
+	ambientColor5 *= attenuation5;
+	diffuseColor5 *= attenuation5;
+	specularColor5 *= attenuation5;
+
+
+	vec3 finalColor =  ambientColor4 + diffuseColor4 + specularColor4 +  ambientColor3 + diffuseColor3 + specularColor3 + ambientColor + diffuseColor + specularColor + ambientColor1 + diffuseColor1 + specularColor1+ ambientColor2 + diffuseColor2 + specularColor2 + ambientColor5 + diffuseColor5 + specularColor5;
+
+	gl_FragColor = vec4(finalColor, 1.0);
+}
