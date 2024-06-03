@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Ask3_58650.cpp" />
+    <ClCompile Include="src\Ask4_58650.cpp" />
     <ClCompile Include="src\glm\detail\glm.cpp" />
     <ClCompile Include="src\imgui\imgui.cpp" />
     <ClCompile Include="src\imgui\imgui_demo.cpp" />
@@ -189,6 +189,7 @@
     <ClInclude Include="src\Shader_58650_21.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="README.md" />
     <None Include="src\glm\detail\func_common.inl" />
     <None Include="src\glm\detail\func_common_simd.inl" />
     <None Include="src\glm\detail\func_exponential.inl" />
@@ -300,6 +301,11 @@
     <None Include="src\glm\gtx\vector_angle.inl" />
     <None Include="src\glm\gtx\vector_query.inl" />
     <None Include="src\glm\gtx\wrap.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="src\ask1.png" />
+    <Image Include="src\ask3.png" />
+    <Image Include="src\ask4.png" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

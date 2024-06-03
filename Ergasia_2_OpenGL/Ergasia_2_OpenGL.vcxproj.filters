@@ -39,7 +39,7 @@
     <ClCompile Include="src\glm\detail\glm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Ask3_58650.cpp">
+    <ClCompile Include="src\Ask4_58650.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -850,5 +850,17 @@
     <None Include="src\glm\gtx\wrap.inl">
       <Filter>Header Files</Filter>
     </None>
+    <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="src\ask1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="src\ask3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="src\ask4.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
