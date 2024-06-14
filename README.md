@@ -1,8 +1,8 @@
 # Εργασία 2 OpenGL
 
-1. Οι εκφωνησείς των ασκήσεων βρίσκονται [Homework files.pdf](https://github.com/HerGousis/Ergasia_2_OpenGL/blob/master/Ergasia_2_OpenGL/Homework%20files.pdf)
+1. Οι εκφωνησείς των ασκήσεων βρίσκονται στο αρχείο [Homework files.pdf](https://github.com/HerGousis/Ergasia_2_OpenGL/blob/master/Ergasia_2_OpenGL/Homework%20files.pdf)
 
-2. Παρακάτω παρατίθενται είκονες απο αποτελέσματα των ασκήσεων :
+2. Παρακάτω υπάρχουν είκονες απο τα αποτελέσματα των ασκήσεων :
 
 <div style="text-align:center;">
     <img src="Ergasia_2_OpenGL/src/ask1.png" alt="ask1" width="800">
